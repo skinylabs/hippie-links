@@ -46,8 +46,84 @@ body {
   background-color: #faf3dd;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Menghindari scroll jika ada elemen besar */
+  position: relative;
 }
 
+/* Efek Memphis Background */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 20%,
+    transparent 80%
+  );
+  z-index: -1;
+}
+
+body::before {
+  top: 10%;
+  left: -50px;
+  transform: rotate(20deg);
+}
+
+body::after {
+  bottom: 5%;
+  right: -50px;
+  transform: rotate(-15deg);
+}
+
+/* Elemen dekoratif Memphis */
+.decorative {
+  position: absolute;
+  z-index: -1;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background: #f76c6c;
+  border-radius: 50%;
+  top: 15%;
+  left: 10%;
+}
+
+.zigzag {
+  width: 100px;
+  height: 10px;
+  background: black;
+  clip-path: polygon(
+    0% 50%,
+    10% 0%,
+    20% 50%,
+    30% 0%,
+    40% 50%,
+    50% 0%,
+    60% 50%,
+    70% 0%,
+    80% 50%,
+    90% 0%,
+    100% 50%
+  );
+  top: 40%;
+  right: 10%;
+}
+
+.dots {
+  width: 8px;
+  height: 8px;
+  background: black;
+  border-radius: 50%;
+  box-shadow: 20px 0 black, 40px 0 black, 60px 0 black;
+  top: 70%;
+  left: 20%;
+}
+
+/* Container utama */
 .container {
   min-height: 100vh;
   display: flex;
@@ -57,6 +133,7 @@ body {
   padding: 20px;
 }
 
+/* Logo */
 .logo {
   margin-bottom: 20px;
 }
@@ -65,6 +142,7 @@ body {
   fill: black;
 }
 
+/* Grid link */
 .link-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -73,6 +151,7 @@ body {
   width: 100%;
 }
 
+/* Link styling */
 .link {
   display: flex;
   align-items: center;
@@ -83,15 +162,17 @@ body {
   border: 4px solid black;
   padding: 15px;
   border-radius: 10px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
   text-decoration: none;
   color: black;
+  position: relative;
 }
 
 .link:hover {
   transform: scale(1.1) rotate(2deg);
 }
 
+/* Warna link */
 .pink {
   background-color: #f8afa6;
 }
@@ -108,6 +189,29 @@ body {
   background-color: #d9a6f8;
 }
 
+/* Efek pola tambahan di setiap link */
+.link::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: black;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background: black;
+  bottom: 5px;
+  right: 5px;
+}
+
+/* Footer */
 .footer {
   margin-top: 20px;
   text-align: center;
@@ -119,6 +223,7 @@ body {
   width: 100%;
 }
 
+/* Popup */
 .popup-overlay {
   position: fixed;
   top: 0;
